@@ -247,51 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ===== DOWNLOAD COUNTER ===== */
-
-  const downloadCountEl = document.getElementById("downloadCount");
-  const STORAGE_KEY = "falcraft_downloads";
-
-  /** Animate counting from current value to target */
-  const animateCounter = (element, target, duration = 1000) => {
-    if (!element) return;
-
-    const start = parseInt(element.textContent) || 0;
-    const increment = target - start;
-    const startTime = performance.now();
-
-    const update = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const currentValue = Math.floor(start + increment * eased);
-
-      element.textContent = currentValue;
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    };
-
-    requestAnimationFrame(update);
-  };
-
-  // Initialize download count
-  let downloadCount = parseInt(localStorage.getItem(STORAGE_KEY));
-  if (isNaN(downloadCount)) {
-    downloadCount = Math.floor(Math.random() * (248 - 156 + 1)) + 156;
-    localStorage.setItem(STORAGE_KEY, downloadCount);
-  }
-
-  if (downloadCountEl) {
-    // Delay animation for visual appeal
-    setTimeout(() => {
-      animateCounter(downloadCountEl, downloadCount, 1500);
-    }, 1200);
-  }
-
   // Track download clicks
   const downloadBtn = document.getElementById("downloadBtn");
 
@@ -391,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (typingElement) {
     const phrases = [
-      "Survival & Create Mod",
+      "Creative Mode + Create Mod",
       "Build \u2022 Automate \u2022 Explore",
       "Railway System & Decoration",
       "Komunitas Kecil, Petualangan Besar",
