@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ===== COPY SERVER IP ===== */
 
   const copyIpBtn = document.getElementById("copyIp");
-  const SERVER_IP = "javacreate.naufalrafa.my.id";
+  const SERVER_IP = "play.javacreate.naufalrafa.my.id";
 
   if (copyIpBtn) {
     const originalHTML = copyIpBtn.innerHTML;
@@ -461,8 +461,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /**
      * Fetch server status
-     * TODO: Replace with actual API call when ready
-     * Example: const res = await fetch('https://api.mcsrvstat.us/3/javacreate.naufalrafa.my.id');
      */
     async fetchStatus() {
       try {
@@ -473,7 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.playerCount = data.players ? data.players.online : 0;
         this.maxPlayers = data.players ? data.players.max : 20;
         this.version = data.version || "Unknown";
-        // Placeholder return - replace with actual fetch in production
+        
         return {
           online: this.online,
           players: this.playerCount,
